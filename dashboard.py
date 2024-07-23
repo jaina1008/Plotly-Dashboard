@@ -141,8 +141,8 @@ class PageConfig:
         st.plotly_chart(fig, use_container_width=True, height=200)
 
         with st.expander('Download CSV: Sales Per Sub-Category'):
-            st.write(category_df.style.background_gradient(cmap='Blues'))
-            csv=category_df.to_csv(index=False)
+            st.write(subCategory_df.style.background_gradient(cmap='Blues'))
+            csv=subCategory_df.to_csv(index=False)
             st.download_button('Download Data', data=csv, file_name='Sub-Category.csv', mime='text/csv',
                                 help='Click here to download selected data as a CSV file')
     
