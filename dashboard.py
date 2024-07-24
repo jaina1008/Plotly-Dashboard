@@ -153,9 +153,6 @@ class PageConfig:
         
         logging.info('Bar chart 2 worked') 
     
-    
-
-
 
 
 if __name__=="__main__":
