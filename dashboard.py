@@ -98,7 +98,9 @@ class PageConfig:
             else:
                 df = df[df['City'].isin(city)]    
 
-            self.CURRENT_DATASET = df        
+            self.CURRENT_DATASET = df
+
+            logging.info('Data has been filtered according to user')      
         except Exception as e:
             raise CustomException(e, sys)
     
@@ -107,6 +109,7 @@ class PageConfig:
         category_df= df.groupby(by = ['Category'], as_index=False)['Sales'].sum().round(2)
         region_df= df.groupby(by='Region', as_index=False)['Sales'].sum().round(2)
         subCategory_df=df.groupby(by = ['Sub-Category'], as_index=False)['Sales'].sum().round(2)
+        logging.info('Datasets were created before displaying to charts') 
 
         # Bar chart
         with self.COLUMN_NUM[0]:
@@ -120,6 +123,7 @@ class PageConfig:
                 csv=category_df.to_csv(index=False)
                 st.download_button('Download Data', data=csv, file_name='Category.csv', mime='text/csv',
                                     help='Click here to download selected data as a CSV file')
+        logging.info('Bar chart 1 worked') 
 
         # Pie chart
         with self.COLUMN_NUM[1]:
@@ -133,7 +137,8 @@ class PageConfig:
                 csv=region_df.to_csv(index=False)
                 st.download_button('Download Data', data=csv, file_name='Region.csv', mime='text/csv',
                                    help='Click here to download selected data as a CSV file')
-        
+        logging.info('Pie chart worked') 
+
         # Sub-Category chart
         st.subheader('Sales Per Sub-Category')
         fig = px.bar(subCategory_df, x='Sub-Category', y='Sales', text=['${:,.2f}'.format(x) for x in subCategory_df['Sales']],
@@ -145,6 +150,8 @@ class PageConfig:
             csv=subCategory_df.to_csv(index=False)
             st.download_button('Download Data', data=csv, file_name='Sub-Category.csv', mime='text/csv',
                                 help='Click here to download selected data as a CSV file')
+        
+        logging.info('Bar chart 2 worked') 
     
     
 
