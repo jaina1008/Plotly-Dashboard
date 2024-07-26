@@ -2,6 +2,9 @@
 
 ## About the Project
 This project creates a dashboard displaying U.S Regional Sales statistics of a shopping company.
+Two dashboards are available in the repo:
+* Dash-Plotly
+* Streamlit
 
 ## Built With
 - [Streamlit](https://streamlit.io/)
@@ -22,4 +25,7 @@ Please make sure your virtual environment is configured with Python 3.9 or later
 3. Run the dashboard
     ```sh
     python dashboard.py
+    ```
+    ```sh
+    streamlit run streamlit_dashboard.py
     ```
