@@ -7,7 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
-print(os.getcwd())
+
 @dataclass
 class sourceConfig:
     DATA_SOURCE: str= os.path.join('src','storeData.csv')
