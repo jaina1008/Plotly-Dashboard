@@ -1,6 +1,6 @@
 import os
 import sys
-from src.exception import CustomException
+from exception import CustomException
 
 def save_file(file_path, obj):
     try:

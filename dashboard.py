@@ -2,23 +2,14 @@
 from dash import dcc, html, Dash, callback, Input, Output
 import src.myCharts as myCharts
 
-# bgColor="#e5ecf6"
-# margin=dict(l=10,r=10,t=50,b=10)
-# height=600
-# font=dict(size=10)
-
-CSS=["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
-NAME='TOGETHER DASHBOARD'
-
-
-app = Dash(NAME, external_stylesheets=CSS)
+app = Dash(name='Sales Store Analysis')
 app.layout = html.Div([
-    html.Div([ html.H1("Sales Store Analysis", className="text-center fw-bold m-2"), html.Br(),
+    html.Div([ html.H1('Sales Store Analysis', className="text-center fw-bold m-2"), html.Br(),
     html.Div([
         html.Label('REGION'),
         dcc.Dropdown(
             id='region-dropdown',
-            options=[{'label': region, 'value': region} for region in df['Region'].unique()],
+            options=myCharts.regions,
             multi=True
         ),
     ]),
@@ -26,7 +17,8 @@ app.layout = html.Div([
         html.Label('STATE'),
         dcc.Dropdown(
             id='state-dropdown',
-            options=[{'label': state, 'value': state} for state in df['State'].unique()],
+            # options=[{'label': state, 'value': state} for state in myCharts.states],
+            options=myCharts.states,
             multi=True
         ),
     ]),
@@ -34,7 +26,7 @@ app.layout = html.Div([
         html.Label('CITY'),
         dcc.Dropdown(
             id='city-dropdown',
-            options=[{'label': city, 'value': city} for city in df['City'].unique()],
+            options=myCharts.cities,
             multi=True
         ),
     ]),
@@ -58,7 +50,7 @@ def state_options(selected_region):
 @app.callback(
         Output('city-dropdown', 'options'), Input('state-dropdown', 'value'))
 def city_option(selected_state):
-    return myCharts.set_state_options(selected_state)
+    return myCharts.set_city_options(selected_state)
 
 
 @app.callback(
@@ -75,7 +67,6 @@ def update_chart_two(region, state, city):
         Output('Chart3', 'figure'), [Input('region-dropdown', 'value'), Input('state-dropdown', 'value')])
 def update_chart_three(region, state):
     return myCharts.create_choropleth_map(region, state)
-
 
 
 

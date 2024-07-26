@@ -9,7 +9,7 @@ Messages will be logged in the format below
 logging_options={0:logging.CRITICAL, 1:logging.INFO}
 
 # Turn logging ON(1) or OFF(0)
-LOG_OR_NOT= 1
+LOG_OR_NOT= 0
 
 if LOG_OR_NOT:
 

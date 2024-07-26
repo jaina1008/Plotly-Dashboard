@@ -1,5 +1,4 @@
 import sys
-from src.logger import logging
 
 '''
 Custom function to report execption
