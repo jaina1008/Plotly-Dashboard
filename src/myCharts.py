@@ -7,7 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
-
+print(os.getcwd())
 @dataclass
 class sourceConfig:
     DATA_SOURCE: str= os.path.join('src','storeData.csv')
@@ -43,10 +43,12 @@ class dataLoader:
         return pd.read_excel(self.SOURCE)
 
 
-SOURCE_PATH: str= os.path.join('data', 'storeData.csv')
-dataFrame=pd.read_csv(SOURCE_PATH)
-dataFrame['Order Date'] = pd.to_datetime(dataFrame['Order Date'])
-df = pd.DataFrame(dataFrame)
+dataFrame=dataLoader().load_data()
+
+# SOURCE_PATH: str= os.path.join('data', 'storeData.csv')
+# dataFrame=pd.read_csv(SOURCE_PATH)
+# dataFrame['Order Date'] = pd.to_datetime(dataFrame['Order Date'])
+# df = pd.DataFrame(dataFrame)
 
 
 # Set Options based on app callbacks
