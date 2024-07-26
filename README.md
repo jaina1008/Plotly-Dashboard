@@ -21,5 +21,5 @@ Please make sure your virtual environment is configured with Python 3.9 or later
     ```
 3. Run the dashboard
     ```sh
-    streamlit run dashboard.py
+    python dashboard.py
     ```
