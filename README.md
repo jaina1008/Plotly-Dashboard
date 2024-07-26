@@ -16,7 +16,7 @@ Please make sure your virtual environment is configured with Python 3.9 or later
 
 1. Clone the repository
     ```sh
-    git clone [https://github.com/jaina1008/TogetherAJ.git](https://github.com/jaina1008/Plotly_Dashboard.git)
+    git clone https://github.com/jaina1008/Plotly_Dashboard.git
     ```
 2. Install packages from `requirements.txt`
     ```sh
