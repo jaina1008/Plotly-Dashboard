@@ -20,10 +20,7 @@ dataFrame['Order Date'] = pd.to_datetime(dataFrame['Order Date'])
 df = pd.DataFrame(dataFrame)
 
 
-
-# app = dash.Dash(__name__)
 app = Dash(NAME, external_stylesheets=CSS)
-
 app.layout = html.Div([
     html.Div([ html.H1("Sales Store Analysis", className="text-center fw-bold m-2"), html.Br(),
     html.Div([
