@@ -4,7 +4,7 @@ import sys
 Custom function to report execption
 '''
 
-def error_message_detail(error, error_detail:sys):
+def ErrorMessageDetail(error, error_detail:sys):
     _,_,exc_tb=error_detail.exc_info()
     file_name=exc_tb.tb_frame.f_code.co_filename
     error_message='Error occured in Python Script name [{0}] Line number [{1}] Error message: [{2}]'.format(
@@ -16,7 +16,7 @@ def error_message_detail(error, error_detail:sys):
 class CustomException(Exception):
     def __init__(self, error_message, error_detail:sys):
         super().__init__(error_message)
-        self.error_message=error_message_detail(error_message, error_detail=error_detail)
+        self.error_message=ErrorMessageDetail(error_message, error_detail=error_detail)
     
     def __str__(self):
         return self.error_message

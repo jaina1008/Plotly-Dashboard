@@ -7,18 +7,15 @@ import sys
 from dataclasses import dataclass
 from src.exception import CustomException
 from src.logger import logging
+from src.myCharts import SourceConfig
 import warnings
 
 warnings.filterwarnings('ignore')
 
 
-@dataclass
-class SourceConfig:
-    source_data_path: str= os.path.join('data', 'storeData.csv')
-
 class PageConfig:
     def __init__(self, total_cols):
-        self.source_file= SourceConfig()
+        self.source_file= SourceConfig.DATA_SOURCE
         self.PAGE_TITLE='TOGETHER DASHBOARD'
         self.DASH_TITLE='SALES DASHBOARD'
         self.COLUMN_NUM:list=[None]*total_cols
@@ -47,7 +44,7 @@ class PageConfig:
                 logging.info('User given source file has been read')
             
             else:
-                file: str= self.source_file.source_data_path
+                file: str= self.source_file
                 df= pd.read_csv(file)
                 logging.info('Local source file has been read')
         

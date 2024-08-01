@@ -8,12 +8,12 @@ import plotly.graph_objects as go
 import pandas as pd
 
 @dataclass
-class sourceConfig:
+class SourceConfig:
     DATA_SOURCE: str= os.path.join('data','storeData.csv')
 
-class dataLoader:
+class DataLoader:
     def __init__(self):
-        self.SOURCE=sourceConfig()
+        self.SOURCE=SourceConfig()
         self.data=None
     
     def load_data(self):
@@ -44,14 +44,14 @@ class dataLoader:
 
 
 # Returns unique values of columns
-def uniqueValues(dataFrame, *args, **kwargs):
+def UniqueValues(dataFrame, *args, **kwargs):
         return tuple(dataFrame[arg].unique() for arg in args)
 
 
 
 # Load Dataframe
-dataFrame=dataLoader().load_data()
-regions,states,cities=uniqueValues(dataFrame, "Region","State","City")
+dataFrame=DataLoader().load_data()
+regions,states,cities=UniqueValues(dataFrame, "Region","State","City")
 
 
 # Set Options based on app callbacks
